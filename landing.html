@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopHub - Your Ultimate E-Commerce Destination</title>
+    <style>
+      /* ===== CSS VARIABLES ===== */
+      :root {
+        --primary-dark: #131921;
+        --secondary-dark: #1a2533;
+        --primary-orange: #FF9900;
+        --hover-orange: #e68a00;
+        --text-dark: #111;
+        --text-light: #555;
+        --light-gray: #f5f5f5;
+        --border-gray: #e0e0e0;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Segoe UI', Arial, sans-serif; }
+
+      /* ===== NAVIGATION ===== */
+      .landing-nav {
+        background-color: var(--primary-dark);
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      /* LOGO IMAGE - Replace logo.png with your logo file */
+      .landing-logo img {
+        height: 40px;
+        width: auto;
+        cursor: pointer;
+      }
+
+      /* Fallback text if no logo image */
+      .landing-logo-text {
+        font-size: 28px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--primary-orange) 0%, var(--hover-orange) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        cursor: pointer;
+      }
+
+      .landing-nav-links {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .landing-nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .landing-nav-links a:hover { color: var(--primary-orange); }
+
+      .landing-cta-btn {
+        background: linear-gradient(135deg, var(--primary-orange) 0%, var(--hover-orange) 100%);
+        color: var(--text-dark);
+        padding: 10px 25px;
+        border-radius: 24px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+
+      .landing-cta-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(255,153,0,0.3);
+      }
+
+      /* ===== HERO SECTION ===== */
+      /* HERO BACKGROUND IMAGE - Replace hero-bg.jpg with your image file */
+      .landing-hero {
+        background: linear-gradient(135deg, rgba(102,126,234,0.88) 0%, rgba(118,75,162,0.88) 50%, rgba(240,147,251,0.88) 100%),
+                    url('hero-bg.jpg') center/cover no-repeat;
+        padding: 100px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .landing-hero-content {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .landing-hero h1 {
+        font-size: 64px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      }
+
+      .landing-hero p {
+        font-size: 20px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .landing-hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: white;
+        color: #667eea;
+        padding: 15px 40px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 16px;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 30px;
+        border: 2px solid white;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: #667eea;
+      }
+
+      /* ===== FEATURES SECTION ===== */
+      .landing-features {
+        padding: 80px 20px;
+        background-color: var(--light-gray);
+      }
+
+      .landing-section-title {
+        text-align: center;
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 60px;
+        color: var(--text-dark);
+      }
+
+      .landing-section-title span { color: var(--primary-orange); }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border: 1px solid var(--border-gray);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+        border-color: var(--primary-orange);
+      }
+
+      /* FEATURE ICON IMAGES - Replace icon-shipping.png etc with your icon files */
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .feature-icon img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+
+      /* Fallback emoji if no image */
+      .feature-icon-emoji {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .feature-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+      }
+
+      .feature-card p {
+        color: var(--text-light);
+        line-height: 1.8;
+        font-size: 15px;
+      }
+
+      /* ===== CATEGORIES SECTION ===== */
+      .landing-categories {
+        padding: 80px 20px;
+        background-color: white;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* CATEGORY IMAGES - Replace category-electronics.jpg etc with your image files */
+      .category-item {
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        position: relative;
+        height: 180px;
+      }
+
+      .category-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      }
+
+      .category-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .category-item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        color: white;
+        padding: 20px 15px 15px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      /* Fallback gradient backgrounds if no images */
+      .category-item:nth-child(1) .category-fallback { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .category-item:nth-child(2) .category-fallback { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+      .category-item:nth-child(3) .category-fallback { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+      .category-item:nth-child(4) .category-fallback { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+      .category-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+      }
+
+      /* ===== STATISTICS SECTION ===== */
+      .landing-stats {
+        padding: 60px 20px;
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+        color: white;
+      }
+
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .stat-item h3 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--primary-orange);
+      }
+
+      .stat-item p { font-size: 16px; opacity: 0.9; }
+
+      /* ===== TESTIMONIALS SECTION ===== */
+      .landing-testimonials {
+        padding: 80px 20px;
+        background-color: var(--light-gray);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-left: 4px solid var(--primary-orange);
+      }
+
+      .testimonial-stars {
+        color: var(--primary-orange);
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .testimonial-text {
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-size: 15px;
+        font-style: italic;
+      }
+
+      /* TESTIMONIAL AUTHOR IMAGES - Replace sarah.jpg, michael.jpg, emma.jpg */
+      .testimonial-author-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .testimonial-author-wrap img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary-orange);
+      }
+
+      .testimonial-author {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 3px;
+      }
+
+      .testimonial-role {
+        font-size: 13px;
+        color: var(--text-light);
+      }
+
+      /* ===== BANNER / PROMO SECTION ===== */
+      /* PROMO BANNER IMAGE - Replace promo-banner.jpg with your banner image */
+      .landing-promo-banner {
+        margin: 0;
+        overflow: hidden;
+        max-height: 300px;
+        position: relative;
+      }
+
+      .landing-promo-banner img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .landing-promo-banner-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      }
+
+      .landing-promo-banner-overlay h2 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .landing-promo-banner-overlay p {
+        font-size: 18px;
+      }
+
+      /* ===== CTA SECTION ===== */
+      .landing-cta-section {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, var(--primary-orange) 0%, var(--hover-orange) 100%);
+        text-align: center;
+        color: var(--text-dark);
+      }
+
+      .landing-cta-section h2 {
+        font-size: 44px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .landing-cta-section p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        background: white;
+        color: var(--primary-orange);
+        padding: 16px 45px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 16px;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      }
+
+      /* ===== FOOTER ===== */
+      .landing-footer {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+        color: #aaa;
+        padding: 50px 20px 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,153,0,0.2);
+      }
+
+      /* FOOTER LOGO IMAGE - Replace footer-logo.png with your logo */
+      .landing-footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .landing-footer-logo img {
+        height: 35px;
+        width: auto;
+        opacity: 0.8;
+      }
+
+      .landing-footer p {
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        line-height: 1.8;
+      }
+
+      .landing-footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .landing-footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .landing-footer-links a:hover { color: var(--primary-orange); }
+
+      .landing-footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+        color: #666;
+        font-size: 13px;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .landing-nav { flex-direction: column; gap: 15px; }
+        .landing-nav-links { gap: 15px; flex-wrap: wrap; }
+        .landing-hero h1 { font-size: 40px; }
+        .landing-hero p { font-size: 16px; }
+        .landing-hero-buttons { gap: 12px; }
+        .btn-primary, .btn-secondary { padding: 12px 30px; font-size: 14px; }
+        .landing-section-title { font-size: 32px; }
+        .features-grid { gap: 20px; }
+        .feature-card { padding: 30px 20px; }
+        .landing-cta-section h2 { font-size: 32px; }
+        .stat-item h3 { font-size: 36px; }
+      }
+
+      @media (max-width: 480px) {
+        .landing-hero h1 { font-size: 28px; }
+        .landing-hero p { font-size: 14px; }
+        .landing-hero-buttons { flex-direction: column; }
+        .btn-primary, .btn-secondary { width: 100%; }
+        .landing-section-title { font-size: 24px; }
+        .categories-grid { grid-template-columns: repeat(2, 1fr); }
+        .landing-footer-links { gap: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav class="landing-nav">
+      <div class="landing-logo">
+        <!--
+          LOGO IMAGE
+          Upload your logo file and replace "logo.png" with your filename
+          Example: <img src="my-logo.png" alt="ShopHub Logo">
+          If you don't have a logo image, delete the img tag and use the text below
+        -->
+        <img src="logo.png" alt="ShopHub Logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="landing-logo-text" style="display:none;">ShopHub</span>
+      </div>
+      <div class="landing-nav-links">
+        <a href="#features">Features</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="landing-cta-btn" onclick="goToStore()">Start Shopping</button>
+      </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <!--
+      HERO BACKGROUND IMAGE
+      Upload a background image and name it "hero-bg.jpg"
+      Or change the filename in the CSS above: url('hero-bg.jpg')
+      Recommended size: 1920x800px
+      Good free images: unsplash.com (search "online shopping" or "e-commerce")
+    -->
+    <section class="landing-hero">
+      <div class="landing-hero-content">
+        <h1>Your Ultimate Shopping Experience</h1>
+        <p>
+          Discover thousands of products at unbeatable prices. Shop electronics,
+          furniture, home goods, and more with fast shipping and easy returns.
+        </p>
+        <div class="landing-hero-buttons">
+          <button class="btn-primary" onclick="goToStore()">Start Exploring</button>
+          <button class="btn-secondary" onclick="scrollToSection('features')">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROMO BANNER ===================== -->
+    <!--
+      PROMO BANNER IMAGE
+      Upload a wide banner image and name it "promo-banner.jpg"
+      Recommended size: 1920x300px
+      You can use a sale/discount banner image here
+      DELETE this entire section if you don't want a banner
+    -->
+    <div class="landing-promo-banner">
+      <img src="promo-banner.jpg" alt="Special Promotion"
+           onerror="this.parentElement.style.display='none'">
+      <div class="landing-promo-banner-overlay">
+        <h2>🔥 Up to 50% Off Today!</h2>
+        <p>Limited time deals on top products</p>
+      </div>
+    </div>
+
+    <!-- ===================== FEATURES SECTION ===================== -->
+    <section class="landing-features" id="features">
+      <h2 class="landing-section-title">Why Choose <span>ShopHub</span>?</h2>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <!--
+            FEATURE ICON IMAGE
+            Upload icon images and replace "icon-shipping.png" etc.
+            Recommended size: 60x60px PNG with transparent background
+            Free icons: flaticon.com or icons8.com
+            If no image, the emoji fallback will show automatically
+          -->
+          <div class="feature-icon">
+            <img src="icon-shipping.png" alt="Fast Shipping"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>🚚</span>'">
+          </div>
+          <h3>Fast Shipping</h3>
+          <p>Get your orders delivered quickly with our reliable shipping partners. Free shipping on orders over $50!</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="icon-price.png" alt="Best Prices"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>💰</span>'">
+          </div>
+          <h3>Best Prices</h3>
+          <p>Enjoy competitive pricing on all products. Compare prices and find incredible deals every day.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="icon-quality.png" alt="Quality Guaranteed"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>✅</span>'">
+          </div>
+          <h3>Quality Guaranteed</h3>
+          <p>100% authentic products with quality assurance. All items are carefully selected and verified.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="icon-returns.png" alt="Easy Returns"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>🔄</span>'">
+          </div>
+          <h3>Easy Returns</h3>
+          <p>Hassle-free 30-day return policy. Return items easily if you're not completely satisfied.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="icon-secure.png" alt="Secure Payments"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>🛡️</span>'">
+          </div>
+          <h3>Secure Payments</h3>
+          <p>Your payment information is protected with industry-leading security measures at checkout.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="icon-support.png" alt="24/7 Support"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'feature-icon-emoji\'>👥</span>'">
+          </div>
+          <h3>24/7 Support</h3>
+          <p>Our dedicated support team is here to help you anytime. Get quick responses to your questions.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== CATEGORIES SECTION ===================== -->
+    <section class="landing-categories" id="categories">
+      <h2 class="landing-section-title">Browse by <span>Category</span></h2>
+      <div class="categories-grid">
+
+        <!--
+          CATEGORY IMAGES
+          Upload category images and replace the filenames below:
+          - category-electronics.jpg
+          - category-furniture.jpg
+          - category-kitchen.jpg
+          - category-sports.jpg
+          Recommended size: 400x200px
+          If no image, a gradient background will show automatically
+        -->
+
+        <div class="category-item" onclick="filterCategory('Electronics')">
+          <img src="category-electronics.jpg" alt="Electronics"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="category-fallback" style="display:none;">📱 Electronics</div>
+          <div class="category-item-overlay">📱 Electronics</div>
+        </div>
+
+        <div class="category-item" onclick="filterCategory('Furniture')">
+          <img src="category-furniture.jpg" alt="Furniture"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="category-fallback" style="display:none;">🪑 Furniture</div>
+          <div class="category-item-overlay">🪑 Furniture</div>
+        </div>
+
+        <div class="category-item" onclick="filterCategory('Home & Kitchen')">
+          <img src="category-kitchen.jpg" alt="Home & Kitchen"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="category-fallback" style="display:none;">🍳 Home & Kitchen</div>
+          <div class="category-item-overlay">🍳 Home & Kitchen</div>
+        </div>
+
+        <div class="category-item" onclick="filterCategory('Sports & Outdoors')">
+          <img src="category-sports.jpg" alt="Sports"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="category-fallback" style="display:none;">⚽ Sports</div>
+          <div class="category-item-overlay">⚽ Sports</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== STATISTICS SECTION ===================== -->
+    <section class="landing-stats">
+      <div class="stats-container">
+        <div class="stat-item">
+          <h3>50K+</h3>
+          <p>Products Available</p>
+        </div>
+        <div class="stat-item">
+          <h3>100K+</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+          <h3>99.9%</h3>
+          <p>Satisfaction Rate</p>
+        </div>
+        <div class="stat-item">
+          <h3>24/7</h3>
+          <p>Customer Support</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS SECTION ===================== -->
+    <section class="landing-testimonials">
+      <h2 class="landing-section-title">What Our Customers <span>Say</span></h2>
+      <div class="testimonials-grid">
+
+        <!--
+          TESTIMONIAL AUTHOR IMAGES
+          Upload small profile photos and replace:
+          - sarah.jpg
+          - michael.jpg
+          - emma.jpg
+          Recommended size: 100x100px (square, will be cropped to circle)
+          If no image, a placeholder initial will show automatically
+        -->
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">
+            "Amazing selection and great prices! I found exactly what I was
+            looking for and the checkout process was super smooth."
+          </div>
+          <div class="testimonial-author-wrap">
+            <img src="sarah.jpg" alt="Sarah Johnson"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Sarah+Johnson&background=FF9900&color=fff&size=48'">
+            <div>
+              <div class="testimonial-author">Sarah Johnson</div>
+              <div class="testimonial-role">Verified Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">
+            "Fast shipping and excellent customer service. They went above and
+            beyond to help me with my order. Highly recommended!"
+          </div>
+          <div class="testimonial-author-wrap">
+            <img src="michael.jpg" alt="Michael Chen"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Michael+Chen&background=FF9900&color=fff&size=48'">
+            <div>
+              <div class="testimonial-author">Michael Chen</div>
+              <div class="testimonial-role">Verified Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">
+            "Best online shopping experience I've had. Great prices, genuine
+            products, and easy returns. Will definitely shop again!"
+          </div>
+          <div class="testimonial-author-wrap">
+            <img src="emma.jpg" alt="Emma Williams"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Emma+Williams&background=FF9900&color=fff&size=48'">
+            <div>
+              <div class="testimonial-author">Emma Williams</div>
+              <div class="testimonial-role">Verified Customer</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== CTA SECTION ===================== -->
+    <section class="landing-cta-section">
+      <h2>Ready to Start Shopping?</h2>
+      <p>
+        Join thousands of satisfied customers and discover amazing products at
+        unbeatable prices. Your perfect items are just a click away!
+      </p>
+      <button class="cta-button" onclick="goToStore()">Shop Now</button>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="landing-footer">
+      <!--
+        FOOTER LOGO IMAGE
+        Upload your logo and replace "footer-logo.png"
+        DELETE this div if you don't want a footer logo
+      -->
+      <div class="landing-footer-logo">
+        <img src="footer-logo.png" alt="ShopHub"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+
+      <p>
+        ShopHub - Your one-stop destination for quality products at competitive
+        prices. We bring the best shopping experience right to your fingertips.
+      </p>
+
+      <div class="landing-footer-links">
+        <a href="#about">About Us</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#blog">Blog</a>
+      </div>
+
+      <div class="landing-footer-bottom">
+        <p>&copy; 2026 ShopHub. All rights reserved. | Made with ❤️ for online shoppers</p>
+      </div>
+    </footer>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+      function goToStore() {
+        window.location.href = "index.html";
+      }
+
+      function filterCategory(category) {
+        sessionStorage.setItem(
+          "categoryFilter",
+          JSON.stringify(products.filter((p) => p.category === category))
+        );
+        window.location.href = "products.html";
+      }
+
+      function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      // Load products from script.js
+      const script = document.createElement("script");
+      script.src = "script.js";
+      document.body.appendChild(script);
+    </script>
+
+  </body>
+</html>

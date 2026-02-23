@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopHub - Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-top">
+        <a class="logo" onclick="goToHomepage()">ShopHub</a>
+
+        <div class="search-container">
+          <input type="text" placeholder="Search products..." />
+          <button>Search</button>
+        </div>
+
+        <div class="header-actions">
+          <a class="sign-in" onclick="goToCart()">Sign In</a>
+          <a class="cart-icon" onclick="goToCart()">
+            🛒 Cart
+            <span class="cart-count" style="display: none">0</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CATEGORY NAVIGATION -->
+      <div class="category-nav">
+        <a data-category="all">All</a>
+        <a data-category="Electronics">Electronics</a>
+        <a data-category="Furniture">Furniture</a>
+        <a data-category="Home & Kitchen">Home & Kitchen</a>
+        <a data-category="Sports & Outdoors">Sports & Outdoors</a>
+        <a onclick="goToProducts()">See All Categories</a>
+      </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div
+      class="container"
+      style="padding: 10px 10px; font-size: 14px; color: #666"
+    >
+      <a
+        onclick="goToHomepage()"
+        style="color: #0066cc; text-decoration: none; cursor: pointer"
+        >Home</a
+      >
+      &gt;
+      <span>Shopping Cart</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <h1 style="margin: 20px 0; font-size: 28px">Shopping Cart</h1>
+
+      <div class="cart-container">
+        <!-- CART ITEMS -->
+        <section class="cart-items-section">
+          <h2>Your Items</h2>
+          <div id="cart-items">
+            <!-- Cart items will be loaded here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- CART SUMMARY -->
+        <aside class="cart-summary">
+          <h3 style="margin-bottom: 20px; font-size: 18px">Order Summary</h3>
+
+          <div class="summary-item">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Shipping:</span>
+            <span>FREE</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Tax (8%):</span>
+            <span id="tax">$0.00</span>
+          </div>
+
+          <div class="summary-total">
+            <span>Total:</span>
+            <span id="total">$0.00</span>
+          </div>
+
+          <button class="checkout-btn">Proceed to Checkout</button>
+          <button
+            style="
+              width: 100%;
+              padding: 12px;
+              background-color: white;
+              color: var(--primary-orange);
+              border: 2px solid var(--primary-orange);
+              border-radius: 4px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: background-color 0.3s;
+              margin-top: 10px;
+            "
+            onclick="goToProducts()"
+          >
+            Continue Shopping
+          </button>
+        </aside>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Get to Know Us</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Releases</a></li>
+            <li><a href="#">ShopHub Science</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect with Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Make Money with Us</h4>
+          <ul>
+            <li><a href="#">Sell on ShopHub</a></li>
+            <li><a href="#">Associates Program</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+            <li><a href="#">Advertise on ShopHub</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Help & Settings</h4>
+          <ul>
+            <li><a href="#">Account Settings</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 ShopHub. All rights reserved. |
+          <a href="#" style="color: #aaa; text-decoration: none"
+            >Privacy Policy</a
+          >
+          |
+          <a href="#" style="color: #aaa; text-decoration: none"
+            >Terms of Service</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
